@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Welcome</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#006591", "primary-container": "#0ea5e9", "on-primary": "#ffffff",
+                "surface": "#f7f9fb", "on-surface": "#191c1e", "on-surface-variant": "#3e4850"
+              },
+              "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+              "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Inter"] }
+            }
+          }
+        }
+    </script>
+    <style>
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .atmospheric-bg { background: linear-gradient(180deg, #c9e6ff 0%, #f7f9fb 100%); }
+    </style>
+    <script>
+        function toggleLocation() {
+            // Simply call Android to request permission
+            if (typeof Android !== 'undefined' && Android.requestLocationPermission) {
+                Android.requestLocationPermission();
+            }
+        }
+
+        // Called from Kotlin to sync the toggle switch state
+        function updateToggleUI(granted) {
+            const btn = document.getElementById('locationToggle');
+            const dot = document.getElementById('toggleDot');
+            if (granted) {
+                btn.classList.replace('bg-slate-300', 'bg-primary');
+                dot.classList.replace('translate-x-0', 'translate-x-5');
+            } else {
+                btn.classList.replace('bg-primary', 'bg-slate-300');
+                dot.classList.replace('translate-x-5', 'translate-x-0');
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body antialiased flex items-center justify-center min-h-screen">
+<main class="relative w-[390px] h-[847px] atmospheric-bg overflow-hidden flex flex-col items-center px-8 pb-12 pt-4 shadow-2xl">
+    <header class="w-full flex justify-center items-center py-6 mb-4">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">cloud</span>
+            <h1 class="font-headline font-extrabold italic text-primary text-xl tracking-tight">SkyCast</h1>
+        </div>
+    </header>
+
+    <section class="flex-1 flex flex-col items-center justify-center w-full">
+        <div class="relative w-48 h-48 mb-10 flex items-center justify-center">
+            <div class="absolute inset-0 bg-primary-container/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="relative z-10 glass-card p-8 rounded-full">
+                <span class="material-symbols-outlined text-[80px] leading-none text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            </div>
+        </div>
+
+        <div class="text-center space-y-4 mb-10">
+            <h2 class="font-headline text-3xl font-bold text-on-surface leading-tight tracking-tight">Welcome to the Sky!</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed px-2 font-medium opacity-80">
+                Your account is ready. To show you the most accurate local weather, we need to know your location.
+            </p>
+        </div>
+
+        <div class="w-full glass-card border border-white/40 p-6 rounded-[2rem] flex items-center justify-between shadow-lg mb-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-2xl">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">near_me</span>
+                </div>
+                <div>
+                    <p class="font-headline font-bold text-on-surface text-lg">Location Access</p>
+                    <p class="text-xs text-on-surface-variant font-medium">Always accurate</p>
+                </div>
+            </div>
+            <button id="locationToggle" onclick="toggleLocation()" class="relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 bg-slate-300 outline-none">
+                <span id="toggleDot" class="translate-x-0 pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow transition duration-200"></span>
+            </button>
+        </div>
+    </section>
+
+    <footer class="w-full mt-auto">
+        <button onclick="Android.onDashboardClicked()" class="flex items-center justify-center w-full py-5 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold text-lg rounded-full shadow-lg active:scale-95 transition-transform">
+            Take me to my Dashboard
+        </button>
+        <button onclick="Android.onDashboardClicked()" class="w-full mt-4 py-2 text-on-surface-variant font-semibold text-sm hover:text-primary transition-colors">Maybe later</button>
+    </footer>
+</main>
+</body></html>

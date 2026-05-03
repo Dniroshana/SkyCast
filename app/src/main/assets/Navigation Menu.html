@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Menu</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#006591",
+                        "on-surface": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "outline": "#6e7881"
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- Dashboard Content (Background) -->
+<div class="relative min-h-screen w-full flex flex-col grayscale-[0.3] opacity-60 pointer-events-none">
+    <header class="flex justify-between items-center px-6 py-4 w-full bg-transparent docked full-width top-0">
+        <h1 class="text-2xl font-black text-sky-600 font-headline">SkyCast</h1>
+    </header>
+    <main class="flex-1 p-6 space-y-8 overflow-hidden">
+        <section class="relative w-full h-[320px] rounded-[2rem] overflow-hidden bg-gradient-to-br from-primary to-primary-container p-8 text-on-primary shadow-2xl flex flex-col justify-end">
+            <div class="space-y-1">
+                <span class="text-sm uppercase tracking-[0.2em] font-medium opacity-80" id="bgLocation">Location...</span>
+                <h2 class="text-7xl font-headline font-extrabold tracking-tighter" id="bgTemp">--°</h2>
+                <p class="text-lg font-medium" id="bgCondition">Loading weather...</p>
+            </div>
+        </section>
+    </main>
+</div>
+<!-- Navigation Drawer Overlay (Scrim) -->
+<div class="fixed inset-0 bg-on-surface/10 backdrop-blur-sm z-40" onclick="Android.onBackToDashboard()"></div>
+<!-- Navigation Drawer -->
+<aside class="fixed inset-y-0 left-0 z-50 flex flex-col p-6 space-y-8 bg-white/80 backdrop-blur-[24px] rounded-r-[24px] h-full w-[320px] shadow-[32px_0_64px_rgba(14,165,233,0.05)] border-r border-white/20">
+    <!-- Header: User Profile -->
+    <div class="flex flex-col items-start space-y-4 pt-4 w-full">
+        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container ring-4 ring-primary/5 shrink-0">
+            <img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFP8QiEy_ullS0NLztxnHE3vxPrK7XXbfOT_676Mb6wleL9OaFGzNuzTTCp2dhgBv3A83mQT9tPZUUbU78bTQPeHPeu41XXt_0fsxMBFMkwEqGtO_bTeWgdEB2G1UNwPlOWaJxwoG4hMKZdhXwQdKvZBqhykrLxhMohFuouZLvKOgOI2Sa7EPBXSjjsm3WcehJ02blUytecTTmizVUchLTsIoJ9YMWfjhC9S50HV2eBp-uscfRkXa3T9EBN5nace30i2gNyiJ5Ddu2"/>
+        </div>
+        <div class="space-y-0.5 min-w-0 w-full">
+            <h3 id="navUserName" class="text-2xl font-black text-sky-600 font-headline tracking-tight truncate">Sky Explorer</h3>
+            <p id="navUserEmail" class="text-xs font-medium text-primary bg-sky-100/50 px-2 py-0.5 rounded-md inline-block truncate max-w-full">Premium Member</p>
+        </div>
+    </div>
+    <!-- Navigation Links -->
+    <nav class="flex-1 overflow-y-auto pt-4">
+        <ul class="divide-y-0 space-y-2">
+            <li>
+                <a onclick="Android.onBackToDashboard()" class="flex items-center gap-4 px-4 py-3 hover:bg-sky-50 text-slate-600 hover:text-sky-700 rounded-full transition-all duration-300 font-headline tracking-tight" href="javascript:void(0)">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a onclick="Android.onForecastClicked()" class="flex items-center gap-4 px-4 py-3 text-slate-600 hover:text-sky-500 hover:bg-sky-50/50 transition-all duration-300 rounded-full font-medium font-headline tracking-tight group" href="javascript:void(0)">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span>Forecast</span>
+                </a>
+            </li>
+            <li>
+                <a onclick="Android.onRadarClicked()" class="flex items-center gap-4 px-4 py-3 text-slate-600 hover:text-sky-500 hover:bg-sky-50/50 transition-all duration-300 rounded-full font-medium font-headline tracking-tight group" href="javascript:void(0)">
+                    <span class="material-symbols-outlined">radar</span>
+                    <span>Radar</span>
+                </a>
+            </li>
+            <li>
+                <a onclick="Android.onSettingsClicked()" class="flex items-center gap-4 px-4 py-3 text-slate-600 hover:text-sky-500 hover:bg-sky-50/50 transition-all duration-300 rounded-full font-medium font-headline tracking-tight group" href="javascript:void(0)">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Footer -->
+    <div class="pt-6 border-t border-slate-100/50">
+        <div class="bg-sky-50 p-4 rounded-2xl">
+            <p class="text-[10px] uppercase font-bold text-sky-600/60 tracking-[0.2em] mb-1">Current Locale</p>
+            <div class="flex items-center justify-between">
+                <span id="currentLocale" class="text-sm font-headline font-bold text-slate-700">Detecting...</span>
+                <span class="material-symbols-outlined text-sky-500 text-lg">location_on</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<script>
+    function updateWeather(data) {
+        const localeEl = document.getElementById('currentLocale');
+        if (localeEl) localeEl.innerText = data.city;
+        const bgLoc = document.getElementById('bgLocation');
+        const bgTemp = document.getElementById('bgTemp');
+        const bgCond = document.getElementById('bgCondition');
+        if (bgLoc) bgLoc.innerText = data.city;
+        if (bgTemp) bgTemp.innerText = data.temp + '°';
+        if (bgCond) bgCond.innerText = data.condition;
+    }
+
+    function updateUserInfo(name, email) {
+        const nameEl = document.getElementById('navUserName');
+        const emailEl = document.getElementById('navUserEmail');
+        if (nameEl) nameEl.innerText = name;
+        if (emailEl) emailEl.innerText = email;
+    }
+
+    window.onload = function() {
+        if (typeof Android !== 'undefined') {
+            Android.requestLocationPermission();
+            if (Android.requestUserInfo) {
+                Android.requestUserInfo();
+            }
+        }
+    };
+</script>
+</body></html>

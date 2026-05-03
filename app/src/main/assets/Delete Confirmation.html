@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Delete Account</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#006591", "surface": "#f7f9fb", "on-surface": "#191c1e", "on-surface-variant": "#3e4850",
+                        "error": "#ba1a1a", "error-container": "#ffdad6", "on-error": "#ffffff", "outline": "#6e7881"
+                    },
+                    "fontFamily": { "headline": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "body": ["Inter"] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-[#0EA5E9] to-[#0284C7] min-h-screen flex flex-col antialiased w-[390px] h-[847px] mx-auto relative overflow-hidden">
+<header class="fixed top-0 w-full z-50 flex items-center px-4 h-16 bg-white/10 backdrop-blur-md border-b border-white/10">
+    <div class="flex items-center gap-3">
+        <button onclick="Android.onProfileManagementClicked()" class="p-2 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-[24px]">arrow_back</span>
+        </button>
+        <h1 class="font-display font-bold text-xl tracking-tight text-white pb-1">SkyCast</h1>
+    </div>
+</header>
+<main class="flex-1 flex flex-col justify-center items-center px-6 z-10 relative">
+    <div class="w-full max-w-sm bg-white/90 backdrop-blur-[24px] rounded-[1.5rem] p-8 shadow-2xl relative overflow-hidden">
+        <div class="flex flex-col items-center text-center space-y-6 relative z-10">
+            <div class="w-16 h-16 bg-error-container rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-[32px] text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+            </div>
+            <div class="space-y-3">
+                <h1 class="font-display text-2xl font-bold text-on-surface tracking-tight">Delete Account?</h1>
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                    This action is permanent and will remove all your saved locations and preferences.
+                </p>
+            </div>
+            <div class="w-full space-y-4 pt-4">
+                <button onclick="Android.onAccountDeleted()" class="w-full bg-error hover:bg-error/90 text-on-error font-medium text-base py-3.5 px-6 rounded-full transition-all active:scale-95 shadow-lg shadow-error/20">
+                    Delete My Account
+                </button>
+                <button onclick="Android.onProfileManagementClicked()" class="w-full bg-transparent border border-outline/20 text-on-surface font-medium text-base py-3.5 px-6 rounded-full hover:bg-slate-50 transition-colors">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Back to Profile Management
+    function cancelDelete() {
+        if (typeof Android !== 'undefined') {
+            Android.onProfileManagementClicked();
+        }
+    }
+</script>
+</body></html>

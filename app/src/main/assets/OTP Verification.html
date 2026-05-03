@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast | Verify Identity</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#006591", "primary-container": "#0ea5e9", "on-surface": "#191c1e", "on-surface-variant": "#3e4850", "surface": "#f7f9fb"
+              },
+              "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Inter"] }
+            }
+          }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; width: 390px; height: 847px; margin: 0 auto; position: relative; overflow: hidden; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .otp-dot { transition: all 0.2s ease; }
+        .otp-filled { border-color: #006591; transform: scale(1.05); }
+    </style>
+</head>
+<body class="text-on-background flex flex-col shadow-2xl">
+<header class="fixed top-0 w-[390px] z-50 flex items-center px-4 h-14 bg-white/60 backdrop-blur-2xl border-b border-white/20">
+    <div class="flex items-center gap-4 w-full">
+        <button onclick="Android.onGoBackToLogin()" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-sky-50/50 transition-colors active:scale-95 text-sky-600">
+            <span class="material-symbols-outlined text-2xl">arrow_back</span>
+        </button>
+        <h1 class="font-bold tracking-tight text-xl text-primary">SkyCast</h1>
+    </div>
+</header>
+
+<main class="flex-1 flex flex-col items-center p-6 pt-20 pb-8 relative">
+    <div class="w-full flex-1 flex flex-col">
+        <div class="mb-8 text-center">
+            <div class="inline-flex items-center justify-center p-4 rounded-full bg-sky-50 mb-4">
+                <span class="material-symbols-outlined text-primary text-3xl">mark_email_read</span>
+            </div>
+            <h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-2">Check your sky.</h2>
+            <p class="text-on-surface-variant text-sm font-body leading-relaxed max-w-[240px] mx-auto opacity-80">
+                We've sent a 6-digit verification code to your email address.
+            </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-[2rem] shadow-xl border border-white/40 mb-auto">
+            <div class="flex justify-between gap-1.5 mb-8">
+                <div id="digit-0" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+                <div id="digit-1" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+                <div id="digit-2" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+                <div id="digit-3" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+                <div id="digit-4" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+                <div id="digit-5" class="otp-dot w-10 h-14 rounded-xl bg-white flex items-center justify-center text-xl font-bold text-primary border-b-2 border-slate-200"></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mb-8">
+                <button onclick="pressDigit('1')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">1</button>
+                <button onclick="pressDigit('2')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">2</button>
+                <button onclick="pressDigit('3')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">3</button>
+                <button onclick="pressDigit('4')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">4</button>
+                <button onclick="pressDigit('5')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">5</button>
+                <button onclick="pressDigit('6')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">6</button>
+                <button onclick="pressDigit('7')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">7</button>
+                <button onclick="pressDigit('8')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">8</button>
+                <button onclick="pressDigit('9')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">9</button>
+                <button onclick="clearAll()" class="h-12 rounded-full text-slate-400 hover:bg-white active:scale-90">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <button onclick="pressDigit('0')" class="h-12 rounded-full font-bold text-on-surface hover:bg-white active:scale-90">0</button>
+                <button onclick="backspace()" class="h-12 rounded-full text-slate-400 hover:bg-white active:scale-90">
+                    <span class="material-symbols-outlined">backspace</span>
+                </button>
+            </div>
+
+            <button onclick="verifyOTP()" class="w-full bg-primary text-white py-4 rounded-full font-bold shadow-lg active:scale-95 transition-all">
+                Verify Account
+            </button>
+        </div>
+
+        <div class="mt-8 text-center space-y-3">
+            <p class="text-xs font-medium text-on-surface-variant opacity-60 uppercase tracking-widest">
+                Didn't receive the code?
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <button class="text-primary font-bold text-xs">Resend Code</button>
+                <div class="w-1 h-1 rounded-full bg-slate-300"></div>
+                <!-- ✅ Change Email Button Connected -->
+                <button onclick="Android.onChangeEmailClicked()" class="text-on-surface-variant font-bold text-xs hover:text-primary transition-colors">
+                    Change Email
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    let otp = "";
+    function pressDigit(digit) { if (otp.length < 6) { otp += digit; updateUI(); } }
+    function backspace() { if (otp.length > 0) { otp = otp.slice(0, -1); updateUI(); } }
+    function clearAll() { otp = ""; updateUI(); }
+    function updateUI() {
+        for (let i = 0; i < 6; i++) {
+            const el = document.getElementById(`digit-${i}`);
+            if (i < otp.length) {
+                el.innerText = otp[i];
+                el.classList.add('otp-filled', 'border-primary');
+            } else {
+                el.innerText = "";
+                el.classList.remove('otp-filled', 'border-primary');
+            }
+        }
+    }
+    function verifyOTP() {
+        if (otp.length === 6 && typeof Android !== 'undefined') {
+            Android.onVerifyOTP();
+        }
+    }
+</script>
+</body></html>

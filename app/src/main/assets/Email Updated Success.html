@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Email Sent - SkyCast</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#006591", "on-surface": "#191c1e", "on-surface-variant": "#3e4850", "surface": "#f7f9fb"
+              },
+              "fontFamily": { "headline": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "body": ["Inter"] }
+            }
+          }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased flex items-center justify-center min-h-screen">
+<div class="relative h-[847px] w-[390px] mx-auto bg-gradient-to-b from-sky-50 to-white shadow-2xl overflow-hidden flex flex-col">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-2xl flex items-center px-6 h-16">
+        <button onclick="Android.onProfileManagementClicked()" class="p-2 -ml-2 rounded-full hover:bg-sky-50 transition-colors active:scale-95 duration-200 text-sky-600">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="font-bold text-xl tracking-tight text-sky-900 ml-2">Change Email</h1>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-8 text-center">
+        <div class="relative mb-12">
+            <div class="absolute inset-0 bg-sky-100 rounded-full blur-3xl scale-150 opacity-50"></div>
+            <div class="relative w-32 h-32 flex items-center justify-center bg-white glass-panel rounded-[2.5rem] shadow-xl">
+                <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-tr from-sky-600 to-sky-400 rounded-[2rem] shadow-lg">
+                    <span class="material-symbols-outlined text-white text-5xl">mark_email_read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <h2 class="font-headline font-extrabold text-3xl text-sky-900 tracking-tight">Verification Link Sent</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                We've sent a link to your new email. Please check your inbox to verify the change.
+            </p>
+        </div>
+    </main>
+
+    <footer class="p-8 pb-12 w-full">
+        <button onclick="Android.onloginClicked()" class="w-full py-5 bg-sky-600 text-white font-bold rounded-full shadow-lg active:scale-95 transition-all">
+            Back to Login
+        </button>
+    </footer>
+</div>
+</body></html>

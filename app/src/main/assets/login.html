@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Login</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary-fixed": "#2a1700",
+                      "secondary": "#5654a8",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec8d2",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#100563",
+                      "on-primary-fixed": "#001e2f",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#e2dfff",
+                      "surface-bright": "#f7f9fb",
+                      "on-background": "#191c1e",
+                      "surface-variant": "#e0e3e5",
+                      "surface-tint": "#006591",
+                      "outline": "#6e7881",
+                      "primary-container": "#0ea5e9",
+                      "on-primary-container": "#003751",
+                      "primary-fixed-dim": "#89ceff",
+                      "on-surface-variant": "#3e4850",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "primary": "#006591",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-secondary-fixed-variant": "#3e3c8f",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-container-high": "#e6e8ea",
+                      "background": "#f7f9fb",
+                      "tertiary-container": "#d88a00",
+                      "on-primary-fixed-variant": "#004c6e",
+                      "inverse-primary": "#89ceff",
+                      "inverse-surface": "#2d3133",
+                      "surface": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-container": "#a7a5ff",
+                      "on-tertiary-container": "#4a2c00",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#855300",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#c9e6ff",
+                      "on-surface": "#191c1e",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-secondary-container": "#393689",
+                      "inverse-on-surface": "#eff1f3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen relative flex flex-col overflow-x-hidden">
+<!-- Ethereal Background Canvas -->
+<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-fixed via-surface-bright to-secondary-fixed/30"></div>
+    <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[120px]"></div>
+    <div class="absolute bottom-[-5%] right-[-5%] w-[50%] h-[50%] rounded-full bg-secondary/10 blur-[100px]"></div>
+</div>
+<!-- Main Auth Canvas -->
+<main class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="w-full max-w-md">
+        <!-- Branding Header -->
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center p-3 mb-6 bg-white/40 backdrop-blur-md rounded-3xl shadow-sm">
+                <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">cloud</span>
+            </div>
+            <h1 class="font-headline font-extrabold text-4xl tracking-tight bg-gradient-to-r from-sky-600 to-indigo-500 bg-clip-text text-transparent mb-2">SkyCast</h1>
+            <p class="text-on-surface-variant font-medium">Welcome back to the atmosphere</p>
+        </div>
+        <!-- Login Card -->
+        <div class="glass-panel p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-primary/5 border border-white/40">
+            <div class="space-y-6">
+                <!-- Email Field -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-on-surface-variant ml-2" for="email">Email Address</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                        </div>
+                        <input class="w-full bg-surface-container-lowest/50 border-0 focus:ring-2 focus:ring-primary/20 rounded-full py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/60 transition-all" id="email" placeholder="name@example.com" type="email"/>
+                    </div>
+                </div>
+                <!-- Password Field -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center px-2">
+                        <label class="block text-sm font-semibold text-on-surface-variant" for="password">Password</label>
+                        <a class="text-xs font-bold text-primary hover:text-primary-container transition-colors" href="javascript:void(0)" onclick="Android.onForgotPassword()">Forgot Password?</a>
+                    </div>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                        <input class="w-full bg-surface-container-lowest/50 border-0 focus:ring-2 focus:ring-primary/20 rounded-full py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/60 transition-all" id="password" placeholder="••••••••" type="password"/>
+                    </div>
+                </div>
+                <!-- CTA Button -->
+                <div class="pt-2">
+                    <button onclick="Android.onSignIn(document.getElementById('email').value, document.getElementById('password').value)" class="block w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg py-4 rounded-full text-center shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+            <!-- Social Divider -->
+            <div class="flex items-center my-8 px-4">
+                <div class="flex-grow h-px bg-outline-variant/30"></div>
+                <span class="px-4 text-xs font-semibold text-outline tracking-widest uppercase">Or Continue With</span>
+                <div class="flex-grow h-px bg-outline-variant/30"></div>
+            </div>
+            <!-- Social Options -->
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="Android.onGoogleSignIn()" class="flex items-center justify-center gap-2 bg-surface-container-low hover:bg-surface-container-high py-3 rounded-full transition-colors group">
+                    <img alt="Google" class="w-5 h-5 opacity-80 group-hover:opacity-100" data-alt="Official Google G logo icon with primary brand colors on transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0_Xvie85R0ob1bcJ3jPcu1q-wSGbZ2Fo6wZX8kTyHZ-lcEWE63vvPkbQUoJ4FKGecI0BbatMpK5wx-wKc-0bSS82gDcG8SEls7r7CK24OK5eP-6weynf_ubcQ0ryxn0PikwKisn4uwr3zjSq09w4R-9NmTr6IwfEEwuvwdk3HfqQufJOF9DGcCdowABrsO3m5tuRtZW-dzZbaVwXCJW38o47CXKezzpwm8CBDidsuhM85-8GNpoI8fxPs9S0g2oYgi6q6vDl1Z805"/>
+                    <span class="text-sm font-bold text-on-surface-variant">Google</span>
+                </button>
+                <button onclick="Android.onAppleSignIn()" class="flex items-center justify-center gap-2 bg-surface-container-low hover:bg-surface-container-high py-3 rounded-full transition-colors group">
+                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-black">ios</span>
+                    <span class="text-sm font-bold text-on-surface-variant">Apple</span>
+                </button>
+            </div>
+        </div>
+        <!-- Footer Navigation -->
+        <div class="mt-8 text-center">
+            <p class="text-on-surface-variant font-medium">
+                Don't have an account?
+                <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="javascript:void(0)" onclick="Android.onSignUpClicked()">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</main>
+<!-- Visual Accent Element -->
+<div class="hidden lg:block fixed bottom-12 right-12 w-64 h-64 opacity-20 pointer-events-none">
+    <img alt="Cloud aesthetic" class="w-full h-full object-cover rounded-[3rem] rotate-12" data-alt="Dreamy soft white cumulus clouds floating in a pale blue ethereal sky with gentle sunlight highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnVBZyzbX4UB9rvJDoRd_aAVrrwLhxHb5LzobobjcQ0ji2wYGeCWf1ObEnuaUcpmVHsnk_emtwxutAk0SI6bup9UuHdCKzvWGgEBO-tV6y-9pP51TKX5o8-kiPTX6G9LoK4k9wRA0JXWI2f_IXmJ0dwnQUMh2exbT4GYAavph0LpdPVYxTwD8OJTuBt5rppX4DmIz85hokS36Y6dMOOUJWBoB3tj6FrgHTGhzjz38ns0MdbQzlMqogXLy25GsnlKxjvckvSBpWas0r"/>
+</div>
+</body></html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkyCast - Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#006591",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#3e4850",
+                        "outline-variant": "#bec8d2"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #e0f2fe 0%, #f7f9fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 1.75rem;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased pb-32">
+    <div class="max-w-md mx-auto">
+        <!-- Header -->
+        <header class="flex items-center px-6 py-8 gap-6">
+            <button onclick="Android.onBackToDashboard()" class="w-10 h-10 flex items-center justify-center bg-white/50 rounded-full shadow-sm">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </button>
+            <h1 class="text-2xl font-extrabold font-headline tracking-tight">Settings</h1>
+        </header>
+
+        <main class="px-6 space-y-8">
+            <!-- Account Section -->
+            <section>
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4 px-2">Account</h2>
+                <div class="glass-card p-4 flex items-center justify-between shadow-sm border border-white/40">
+                    <div class="flex items-center gap-4 flex-1 min-w-0">
+                        <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shrink-0 shadow-sm">
+                            <img id="settingsProfileImage" alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFP8QiEy_ullS0NLztxnHE3vxPrK7XXbfOT_676Mb6wleL9OaFGzNuzTTCp2dhgBv3A83mQT9tPZUUbU78bTQPeHPeu41XXt_0fsxMBFMkwEqGtO_bTeWgdEB2G1UNwPlOWaJxwoG4hMKZdhXwQdKvZBqhykrLxhMohFuouZLvKOgOI2Sa7EPBXSjjsm3WcehJ02blUytecTTmizVUchLTsIoJ9YMWfjhC9S50HV2eBp-uscfRkXa3T9EBN5nace30i2gNyiJ5Ddu2"/>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p id="settingsUserName" class="font-headline text-lg font-bold truncate">Alex Thompson</p>
+                            <p id="settingsUserEmail" class="text-slate-500 text-xs truncate">alex.thompson@skycast.io</p>
+                        </div>
+                    </div>
+                    <button onclick="Android.onProfileManagementClicked()" class="bg-[#0ea5e9] text-white px-6 py-2 rounded-full text-sm font-bold shadow-md hover:opacity-90 active:scale-95 transition-all">Manage</button>
+                </div>
+            </section>
+
+            <!-- General Section -->
+            <section>
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4 px-2">General</h2>
+                <div class="glass-card divide-y divide-slate-100/50 shadow-sm border border-white/40 overflow-hidden">
+                    <!-- Temperature -->
+                    <div class="flex items-center justify-between p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-sky-600">
+                                <span class="material-symbols-outlined">thermostat</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Temperature Units</p>
+                                <p id="tempUnitLabel" class="text-[10px] font-bold uppercase text-slate-400">Celsius</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="tempToggle" onchange="updateUI()" class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#006591]"></div>
+                        </label>
+                    </div>
+                    <!-- Wind Speed -->
+                    <div class="flex items-center justify-between p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-sky-600">
+                                <span class="material-symbols-outlined">air</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Wind Speed Units</p>
+                                <p id="windUnitLabel" class="text-[10px] font-bold uppercase text-slate-400">km/h</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="windToggle" onchange="updateUI()" class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#006591]"></div>
+                        </label>
+                    </div>
+                    <!-- Pressure Units -->
+                    <div class="flex items-center justify-between p-5 cursor-pointer hover:bg-white/40">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-sky-600">
+                                <span class="material-symbols-outlined">compress</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Pressure Units</p>
+                                <p class="text-[10px] font-bold uppercase text-slate-400">Currently hPa</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section>
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4 px-2">Notifications</h2>
+                <div class="glass-card divide-y divide-slate-100/50 shadow-sm border border-white/40 overflow-hidden">
+                    <div class="flex items-center justify-between p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-indigo-500">
+                                <span class="material-symbols-outlined">light_mode</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Daily Briefing</p>
+                                <p class="text-[10px] font-bold uppercase text-slate-400">7:00 AM</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" checked class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Severe Weather Alerts</p>
+                                <p class="text-[10px] font-bold uppercase text-slate-400">Real-time warnings</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" checked class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-sky-500">
+                                <span class="material-symbols-outlined">umbrella</span>
+                            </div>
+                            <div>
+                                <p class="font-headline font-bold text-sm">Rain Reminders</p>
+                                <p class="text-[10px] font-bold uppercase text-slate-400">Before rain starts</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-500"></div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legal Section -->
+            <section>
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4 px-2">Legal</h2>
+                <div class="glass-card divide-y divide-slate-100/50 shadow-sm border border-white/40 overflow-hidden">
+                    <div class="flex items-center justify-between p-5 hover:bg-white/40 transition-colors cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined">shield_person</span>
+                            </div>
+                            <p class="font-headline font-bold text-sm">Privacy Policy</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+                    </div>
+                    <div class="flex items-center justify-between p-5 hover:bg-white/40 transition-colors cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100/50 flex items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined">description</span>
+                            </div>
+                            <p class="font-headline font-bold text-sm">Terms of Service</p>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+                    </div>
+                </div>
+            </section>
+
+            <p class="text-center text-[10px] font-bold text-slate-400 tracking-widest uppercase py-6">SkyCast v1.0.0</p>
+        </main>
+
+        <!-- Bottom Navbar -->
+        <nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-3 pb-8 bg-white/90 backdrop-blur-xl rounded-t-[2.5rem] z-[1000] shadow-[0_-8px_40px_rgba(0,101,145,0.05)]">
+            <a onclick="Android.onBackToDashboard()" class="flex flex-col items-center justify-center text-slate-400 px-5 py-2.5">
+                <span class="material-symbols-outlined mb-1">home</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+            </a>
+            <a onclick="Android.onForecastClicked()" class="flex flex-col items-center justify-center text-slate-400 px-5 py-2.5">
+                <span class="material-symbols-outlined mb-1">cloud_queue</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Forecast</span>
+            </a>
+            <a onclick="Android.onRadarClicked()" class="flex flex-col items-center justify-center text-slate-400 px-5 py-2.5">
+                <span class="material-symbols-outlined mb-1">radar</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Radar</span>
+            </a>
+            <div class="flex flex-col items-center justify-center bg-sky-50 text-sky-600 rounded-[1.25rem] px-6 py-2.5 shadow-sm border border-sky-100/50">
+                <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">settings</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Settings</span>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        function updateUI() {
+            const tempCheck = document.getElementById('tempToggle');
+            const tempLabel = document.getElementById('tempUnitLabel');
+            tempLabel.innerText = tempCheck.checked ? 'Fahrenheit' : 'Celsius';
+
+            const windCheck = document.getElementById('windToggle');
+            const windLabel = document.getElementById('windUnitLabel');
+            windLabel.innerText = windCheck.checked ? 'mph' : 'km/h';
+        }
+
+        function updateUserInfo(name, email) {
+            if (name) document.getElementById('settingsUserName').innerText = name;
+            if (email) document.getElementById('settingsUserEmail').innerText = email;
+        }
+
+        window.onload = function() {
+            if (typeof Android !== 'undefined' && Android.requestUserInfo) {
+                Android.requestUserInfo();
+            }
+        };
+    </script>
+</body>
+</html>

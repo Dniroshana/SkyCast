@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-dim": "#d8dadc",
+                "tertiary-container": "#d88a00",
+                "primary": "#006591",
+                "secondary-fixed-dim": "#c3c0ff",
+                "secondary-fixed": "#e2dfff",
+                "on-secondary-fixed-variant": "#3e3c8f",
+                "inverse-primary": "#89ceff",
+                "on-background": "#191c1e",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-highest": "#e0e3e5",
+                "on-surface-variant": "#3e4850",
+                "surface-variant": "#e0e3e5",
+                "on-tertiary-container": "#4a2c00",
+                "inverse-on-surface": "#eff1f3",
+                "tertiary": "#855300",
+                "on-secondary-fixed": "#100563",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "surface-tint": "#006591",
+                "surface": "#f7f9fb",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "tertiary-fixed-dim": "#ffb95f",
+                "on-tertiary-fixed": "#2a1700",
+                "tertiary-fixed": "#ffddb8",
+                "on-primary-container": "#003751",
+                "primary-container": "#0ea5e9",
+                "surface-bright": "#f7f9fb",
+                "on-primary-fixed": "#001e2f",
+                "background": "#f7f9fb",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "inverse-surface": "#2d3133",
+                "secondary": "#5654a8",
+                "primary-fixed-dim": "#89ceff",
+                "on-secondary-container": "#393689",
+                "on-primary-fixed-variant": "#004c6e",
+                "surface-container": "#eceef0",
+                "on-surface": "#191c1e",
+                "surface-container-low": "#f2f4f6",
+                "primary-fixed": "#c9e6ff",
+                "outline": "#6e7881",
+                "on-tertiary-fixed-variant": "#653e00",
+                "secondary-container": "#a7a5ff",
+                "outline-variant": "#bec8d2",
+                "surface-container-high": "#e6e8ea",
+                "on-secondary": "#ffffff"
+              },
+              borderRadius: {
+                DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+              },
+              fontFamily: {
+                headline: ["Plus Jakarta Sans", "sans-serif"],
+                body: ["Inter", "sans-serif"],
+                label: ["Inter", "sans-serif"]
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+        }
+        .glass-card {
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+        }
+        .text-gradient {
+          background: linear-gradient(to right, #006591, #0ea5e9);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .ethereal-bg {
+          background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+        }
+        .cloud-wisp {
+          filter: blur(40px);
+          opacity: 0.4;
+        }
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        HTML, body { height: 100%; margin: 0; padding: 0; }
+    </style>
+    <title></title>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col items-center justify-between overflow-hidden relative">
+
+<!-- Atmospheric Background -->
+<div class="absolute inset-0 ethereal-bg -z-10"></div>
+<div class="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-primary-fixed opacity-20 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-secondary-container opacity-10 rounded-full blur-[120px]"></div>
+
+<!-- Cloud Wisps -->
+<div class="absolute top-[20%] left-[-5%] w-[250px] h-[100px] bg-white cloud-wisp rounded-full transform -rotate-12"></div>
+<div class="absolute top-[40%] right-[-10%] w-[300px] h-[120px] bg-white cloud-wisp rounded-full transform rotate-6"></div>
+<div class="absolute bottom-[30%] left-[10%] w-[200px] h-[80px] bg-white cloud-wisp rounded-full"></div>
+
+<!-- Main Content -->
+<main class="flex-1 w-full flex flex-col items-center justify-center px-8 z-10">
+    <div class="relative group mb-12">
+        <div class="absolute inset-0 bg-tertiary-container opacity-20 blur-[40px] rounded-full scale-110 animate-pulse"></div>
+        <div class="relative w-48 h-48 flex items-center justify-center glass-card rounded-full shadow-[0_20px_50px_rgba(0,101,145,0.08)]">
+            <span class="material-symbols-outlined text-[100px] text-tertiary-container" style="font-variation-settings: 'FILL' 1, 'wght' 200;">wb_sunny</span>
+            <div class="absolute inset-0 rounded-full border border-white/40 pointer-events-none"></div>
+        </div>
+    </div>
+
+    <div class="text-center max-w-xs">
+        <h1 class="font-headline font-extrabold text-5xl tracking-tight text-gradient mb-4">SkyCast</h1>
+        <p class="text-on-surface-variant font-body text-lg font-light tracking-wide leading-relaxed">
+            Experience the atmosphere in <span class="font-semibold text-primary">high clarity</span>.
+        </p>
+    </div>
+</main>
+
+<!-- CTA Section -->
+<div class="w-full max-w-sm px-8 pb-16 z-10">
+    <button
+            onclick="Android.onGetStarted()"
+            class="group relative flex items-center justify-center w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg rounded-full shadow-lg shadow-primary/20 active:scale-[0.98] transition-all duration-300">
+        <span>Get Started</span>
+        <span class="material-symbols-outlined ml-2">arrow_forward</span>
+    </button>
+
+</div>
+
+</body>
+</html>

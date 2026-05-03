@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#006591", "on-surface": "#191c1e", "on-surface-variant": "#3e4850", "surface": "#f7f9fb"
+                    },
+                    "fontFamily": { "headline": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "body": ["Inter"] }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .weather-gradient { background: linear-gradient(180deg, #006591 0%, #0ea5e9 100%); }
+        body { margin: 0 auto; overflow-x: hidden; background-color: #f7f9fb; min-height: 100vh; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased w-[390px] mx-auto relative pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-2xl shadow-sm shadow-sky-900/5">
+    <div class="flex items-center px-6 h-16 w-full max-w-screen-xl mx-auto">
+        <button onclick="Android.onChangeEmailClicked()" class="mr-4 text-sky-600 active:scale-95 duration-200 hover:bg-sky-50 p-2 rounded-full">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="font-bold text-xl tracking-tight text-on-surface">Change Email</h1>
+    </div>
+</header>
+
+<main class="pt-24 px-6">
+    <section class="mb-12 flex flex-col items-center text-center">
+        <div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-4xl">alternate_email</span>
+        </div>
+        <h2 class="font-display font-extrabold text-3xl text-on-surface mb-3 tracking-tight">Update your email</h2>
+        <p class="font-body text-on-surface-variant leading-relaxed px-4">Enter your new email address below. We'll send a verification link.</p>
+    </section>
+
+    <section class="space-y-8">
+        <div class="space-y-2">
+            <label class="font-bold text-xs uppercase tracking-widest text-primary ml-1">New Email Address</label>
+            <input id="emailInput" class="w-full bg-white border-none rounded-2xl px-6 py-4 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 transition-all shadow-sm" placeholder="name@newemail.com" type="email"/>
+        </div>
+        <button onclick="sendLink()" class="w-full weather-gradient text-white font-bold py-5 rounded-full shadow-lg active:scale-95 transition-transform">
+            Send Verification Link
+        </button>
+    </section>
+
+    <section class="mt-12">
+        <div class="glass-panel p-6 rounded-[2rem] border border-white/40 shadow-sm">
+            <div class="flex items-start gap-4">
+                <div class="p-3 bg-amber-50 rounded-2xl">
+                    <span class="material-symbols-outlined text-amber-600">security</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-on-surface mb-1">Security Check</h3>
+                    <p class="text-sm text-on-surface-variant leading-snug">Changing your email requires verification for your safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    function sendLink() {
+        const email = document.getElementById('emailInput').value;
+        if (email && typeof Android !== 'undefined') {
+            Android.onEmailVerificationSent();
+        } else {
+            alert("Please enter a valid email");
+        }
+    }
+</script>
+</body></html>

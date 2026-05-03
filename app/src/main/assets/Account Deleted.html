@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Account Deleted - SkyCast</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#a7a5ff",
+                      "primary": "#006591",
+                      "surface-bright": "#f7f9fb",
+                      "on-background": "#191c1e",
+                      "on-primary-fixed": "#001e2f",
+                      "surface-container-low": "#f2f4f6",
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#003751",
+                      "background": "#f7f9fb",
+                      "surface-container-high": "#e6e8ea",
+                      "primary-fixed": "#c9e6ff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#004c6e",
+                      "outline": "#6e7881",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#89ceff",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e0e3e5",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-secondary-fixed-variant": "#3e3c8f",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface": "#f7f9fb",
+                      "on-secondary-fixed": "#100563",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-tint": "#006591",
+                      "primary-container": "#0ea5e9",
+                      "tertiary-container": "#d88a00",
+                      "secondary": "#5654a8",
+                      "tertiary-fixed": "#ffddb8",
+                      "tertiary": "#855300",
+                      "outline-variant": "#bec8d2",
+                      "on-secondary-container": "#393689",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#89ceff",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#d8dadc",
+                      "secondary-fixed": "#e2dfff",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-tertiary-container": "#4a2c00",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-container": "#eceef0",
+                      "on-surface-variant": "#3e4850",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#191c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+    </script>
+    <style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex justify-center items-center min-h-screen">
+<!-- Mobile Device Container -->
+<div class="w-[390px] h-[847px] max-w-full relative overflow-hidden flex flex-col bg-surface shadow-2xl shadow-outline/20 sm:rounded-[2.5rem] sm:border-[8px] sm:border-surface-container-highest">
+    <!-- Atmospheric Background Layer -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary-fixed/40 via-surface to-surface pointer-events-none z-0"></div>
+    <div class="absolute top-[-10%] left-[-20%] w-[80%] h-[40%] bg-primary-fixed/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-[-10%] right-[-20%] w-[60%] h-[30%] bg-secondary-fixed/10 rounded-full blur-[80px] pointer-events-none z-0"></div>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-1 flex flex-col items-center justify-center px-8 text-center z-10 relative">
+        <div class="mb-10 text-outline-variant/60">
+            <span class="material-symbols-outlined text-[88px] drop-shadow-sm" style="font-variation-settings: 'wght' 100, 'FILL' 0;">
+                cloud_off
+            </span>
+        </div>
+        <div class="space-y-4">
+            <h1 class="font-headline text-[32px] leading-tight font-bold text-on-surface tracking-tight">
+                Account Deleted
+            </h1>
+            <p class="font-body text-[15px] text-on-surface-variant leading-relaxed max-w-[280px] mx-auto">
+                We're sorry to see you go. Your account and data have been permanently removed.
+            </p>
+        </div>
+    </main>
+    <!-- Bottom Action Area -->
+    <div class="w-full px-6 pb-12 z-10 relative">
+        <button onclick="Android.onReturnToStart()" class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-base font-bold tracking-wide rounded-full flex items-center justify-center hover:opacity-90 transition-opacity duration-300 shadow-[0_8px_32px_rgba(0,101,145,0.15)] active:scale-[0.98]">
+            Return to Start
+        </button>
+    </div>
+</div>
+</body></html>
