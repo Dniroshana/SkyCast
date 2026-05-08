@@ -5,9 +5,6 @@
 <br>
 SkyCast is a high-performance, responsive weather application for Android that combines a sleek web-based UI with native Android power. It provides real-time weather data, interactive radar maps, and detailed forecasts using a hybrid architecture (Kotlin + WebView).
 
-### 📺 Project Demo
-[![Watch the Video](https://img.shields.io/badge/Watch-Demo_Video-red?style=for-the-badge&logo=youtube)]([VIDEO_URL_HERE])
-
 ---
 
 ## 🎨 Design & UI/UX
