@@ -1,8 +1,8 @@
 
 # SkyCast - Modern Weather Application
 
-![SkyCast Banner](https://via.placeholder.com/800x400?text=SkyCast+App+Banner) <!-- මෙතනට ඔයාගේ App එකේ Screenshot එකක් හෝ Banner එකක් දාන්න -->
-
+<img width="1920" height="960" alt="Cover" src="https://github.com/user-attachments/assets/5799681f-ebc2-45e8-827d-3fa434f084d0" />
+<br>
 SkyCast is a high-performance, responsive weather application for Android that combines a sleek web-based UI with native Android power. It provides real-time weather data, interactive radar maps, and detailed forecasts using a hybrid architecture (Kotlin + WebView).
 
 ### 📺 Project Demo
