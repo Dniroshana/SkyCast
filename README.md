@@ -10,7 +10,7 @@ SkyCast is a high-performance, responsive weather application for Android that c
 ## 🎨 Design & UI/UX
 The interface was meticulously designed to provide a modern "Glass-morphism" experience. You can view the original design system and wireframes here:
 
-👉 **[View Figma Design Case Study](https://www.figma.com/design/qb33iaqn6Qs7MUratGKJCA/SkyCast?node-id=0-1&t=z6piRu0Qa8op0NLV-1)**
+👉 **[ Figma Design here:](https://www.figma.com/design/qb33iaqn6Qs7MUratGKJCA/SkyCast?node-id=0-1&t=z6piRu0Qa8op0NLV-1)**
 
 ---
 
